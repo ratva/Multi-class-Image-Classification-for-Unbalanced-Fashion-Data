@@ -27,6 +27,7 @@ def load_data(dir_name):
 #save predictions
 def format_pred(dir_name, predictions):
     names = ['dress', 'pullover', 'top', 'trouser', 'sandal', 'sneaker']
+    prng = np.random.RandomState(0)
 
     # Load the dataset of interest
     datadir = dir_name
@@ -39,7 +40,7 @@ def format_pred(dir_name, predictions):
     predictions = predictions
     for n in range(N):
         pred_name = prng.choice(names, size=1)
-        predictions.append(rand_name)
+        predictions.append(pred_name)
 
     # Save the predictions in the leaderboard format
     np.savetxt('yhat_valid.txt', predictions, delimiter='\n', fmt='%s')

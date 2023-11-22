@@ -1,4 +1,5 @@
-## Project B Instructions
+# CS135-Project-B
+Project B: Classifying Images - Avtar and Leigh
 
 https://www.cs.tufts.edu/cs/135/2023f/projectB.html
 
