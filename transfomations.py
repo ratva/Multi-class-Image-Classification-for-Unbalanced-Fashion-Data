@@ -131,7 +131,7 @@ def rot_expose(img_arr, num_trans, dir):
         
         if dir == 'light':
             up = np.random.uniform(0.1, 0.9, size=1)
-            lighter = skimage.exposure.adjust_gamma(rotated, up[i])
+            lighter = skimage.exposure.adjust_gamma(rotated, up)
             rotated_exp[i]= lighter.reshape((1, 784))
         elif dir == 'dark': 
             dwn = np.random.uniform(2, 3, size=1)
@@ -139,23 +139,3 @@ def rot_expose(img_arr, num_trans, dir):
             rotated_exp[i]= (darker.reshape((1, 784)))
 
     return rotated_exp
-
-
-#function just to see ONE instance to make sure picture looks as intended.
-def show_image(x_set, index, newImg):
-    fig, axgrid = plt.subplots(1, 2, figsize=(8, 4))
-
-    ax1 = axgrid[0]
-    ax2 = axgrid[1]
-    x_SS2 = x_set[index].reshape((28,28))
-
-    #shows the original image
-    ax1.imshow(x_SS2, vmin=0, vmax=1, cmap='gray')
-    ax1.set_xticks([]); ax1.set_yticks([]);
-
-    #display new image.
-    ax2.imshow(newImg, vmin=0, vmax=1, cmap='gray')
-    ax2.set_xticks([]); ax2.set_yticks([]);
-
-    plt.tight_layout();
-    plt.show();
