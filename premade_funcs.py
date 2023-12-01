@@ -35,7 +35,7 @@ def format_pred(predictions):
         y_hat_names.append(pred_name)
 
     # Save the predictions in the leaderboard format
-    np.savetxt('yhat_valid.txt', y_hat_names, delimiter='\n', fmt='%s')
+    np.savetxt('yhat_test.txt', y_hat_names, delimiter='\n', fmt='%s')
 
 
 def calc_accuracy(dir_name, y_df, ytrue_N, ):
