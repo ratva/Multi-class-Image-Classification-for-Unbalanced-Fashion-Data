@@ -25,25 +25,17 @@ def load_data(dir_name):
 
 
 #save predictions
-def format_pred(dir_name, predictions):
-    names = ['dress', 'pullover', 'top', 'trouser', 'sandal', 'sneaker']
-    prng = np.random.RandomState(0)
+def format_pred(predictions):
+    names = {3: 'dress', 2: 'pullover', 0: 'top', 1: 'trouser', 5: 'sandal', 7: 'sneaker'}
 
-    # Load the dataset of interest
-    datadir = dir_name
-    x_NF = np.loadtxt(
-        os.path.join(datadir, 'x_valid.csv'),
-        delimiter=',',
-        skiprows=1)
-    N = x_NF.shape[0]
-
-    predictions = predictions
-    for n in range(N):
-        pred_name = prng.choice(names, size=1)
-        predictions.append(pred_name)
+    y_hat_names = list()
+    # Load the dataset of interest   
+    for y_hat in predictions:
+        pred_name = names.get(y_hat)
+        y_hat_names.append(pred_name)
 
     # Save the predictions in the leaderboard format
-    np.savetxt('yhat_valid.txt', predictions, delimiter='\n', fmt='%s')
+    np.savetxt('yhat_test.txt', y_hat_names, delimiter='\n', fmt='%s')
 
 
 def calc_accuracy(dir_name, y_df, ytrue_N, ):
